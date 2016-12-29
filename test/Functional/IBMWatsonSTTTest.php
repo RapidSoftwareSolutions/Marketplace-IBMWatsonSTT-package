@@ -23,7 +23,20 @@ class IBMWatsonSTTTest extends BaseTestCase {
             'checkSingleJob',
             'deleteSingleJob',
             'createCustomModel',
-            'getCustomModels'
+            'getCustomModels',
+            'getSingleCustomModel',
+            'trainCustomModel',
+            'resetCustomModel',
+            'deleteCustomModel',
+            'addCorpus',
+            'getCorpora',
+            'getSingleCorpus',
+            'deleteSingleCorpus',
+            'addWordsToCustomModel',
+            'addSingleWordToCustomModel',
+            'getWords',
+            'getSingleWord',
+            'deleteWordFromCustomModel'
         ];
         
         foreach($routes as $file) {
