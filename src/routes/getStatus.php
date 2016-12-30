@@ -16,7 +16,7 @@ $app->post('/api/IBMWatsonSTT/getStatus', function ($request, $response, $args) 
     
     $auth = [$post_data['args']['username'], $post_data['args']['password']];
     
-    $query_str = $settings['api_url'] . '/v1/sessions/'.$post_data['args']['sessionId'].'/recognize';
+    $query_str = $settings['api_url'] . '/v1/sessions/'.$post_data['args']['sessionId'].'/observe_result';
    
     $jar = new CookieJar();
     foreach($post_data['args']['cookies'] as $cookie) {
