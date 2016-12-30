@@ -5,7 +5,7 @@ $app->post('/api/IBMWatsonSTT/addSingleWordToCustomModel', function ($request, $
     $settings = $this->settings;
     
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['username','password','customizationId','wordName']);
+    $validateRes = $checkRequest->validate($request, ['username','password','customizationId','wordName','wordSoundsLike']);
     if(!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback']=='error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
@@ -16,10 +16,7 @@ $app->post('/api/IBMWatsonSTT/addSingleWordToCustomModel', function ($request, $
     
     $headers['Content-Type'] = 'application/json';
     
-    $body = [];
-    if(!empty($post_data['args']['wordSoundsLike'])) {
-        $body['sounds_like'] = $post_data['args']['wordSoundsLike'];
-    }
+    $body['sounds_like'] = $post_data['args']['wordSoundsLike'];
     if(!empty($post_data['args']['wordDisplayAs'])) {
         $body['display_as'] = $post_data['args']['wordDisplayAs'];
     }
