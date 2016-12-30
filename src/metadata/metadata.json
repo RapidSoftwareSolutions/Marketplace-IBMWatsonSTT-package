@@ -2,7 +2,7 @@
   "package": "IBMWatsonSTT",
   "tagline": "IBM Watson Speech To Text API",
   "description": "The IBM® Speech to Text service provides an API that enables you to add IBM's speech recognition capabilities to your applications.",
-  "image": "http://logo.clearbit.com/bluemix.com",
+  "image": "https://watson-api-explorer.mybluemix.net/images/watson-apis/SpeechtoText.svg",
   "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-IBMWatsonSTT-package",
   "keywords": [
     "API",
