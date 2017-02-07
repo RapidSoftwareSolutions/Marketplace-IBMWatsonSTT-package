@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/IBMWatsonSTT/functions?utm_source=RapidAPIGitHub_IBMWatsonSTTFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # IBMWatsonSTT Package
 The IBM® Speech to Text service provides an API that enables you to add IBM's speech recognition capabilities to your applications.
 * Domain: ibm.com
