@@ -692,7 +692,11 @@
         },
         {
           "name": "continuous",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Indicates whether multiple final results that represent consecutive phrases separated by long pauses are returned. If true, such phrases are returned; if false (the default), recognition ends after the first end-of-speech (EOS) incident is detected.",
           "required": false
         },
@@ -728,31 +732,51 @@
         },
         {
           "name": "wordConfidence",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Indicates whether a confidence measure in the range of 0 to 1 is returned for each word. The default is false.",
           "required": false
         },
         {
           "name": "timestamps",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Indicates whether time alignment is returned for each word. The default is false.",
           "required": false
         },
         {
           "name": "profanityFilter",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Indicates whether profanity filtering is performed on the transcript. If true (the default), the service filters profanity from all output except for keyword results by replacing inappropriate words with a series of asterisks. If false, the service returns results with no censoring. Applies to US English transcription only.",
           "required": false
         },
         {
           "name": "smartFormatting",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Indicates whether dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses are to be converted into more readable, conventional representations in the final transcript of a recognition request. If true, smart formatting is performed; if false (the default), no formatting is performed. Applies to US English transcription only.",
           "required": false
         },
         {
           "name": "speakerLabels",
-          "type": "String",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Indicates whether labels that identify which words were spoken by which participants in a multi-person exchange are to be included in the response. If true, speaker labels are returned; if false (the default), they are not. Speaker labels can be returned only for the following language models: en-US_NarrowbandModel, es-ES_NarrowbandModel, ja-JP_NarrowbandModel. Setting speaker_labels to true forces the continuous and timestamps parameters to be true, as well, regardless of whether the user specifies false for the parameters.",
           "required": false
         }
