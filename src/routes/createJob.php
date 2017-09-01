@@ -25,7 +25,7 @@ $app->post('/api/IBMWatsonSTT/createJob', function ($request, $response, $args) 
         $query['callback_url'] = $post_data['args']['callbackUrl'];
     }
     if(!empty($post_data['args']['events'])) {
-        $query['events'] = $post_data['args']['events'];
+        $query['events'] = is_array($post_data['args']['events']) ? implode(',', $post_data['args']['events']) : $post_data['args']['events'];
     }
     if(!empty($post_data['args']['userToken'])) {
         $query['user_token'] = $post_data['args']['userToken'];

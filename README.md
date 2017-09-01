@@ -2,7 +2,7 @@
 
 # IBMWatsonSTT Package
 The IBM® Speech to Text service provides an API that enables you to add IBM's speech recognition capabilities to your applications.
-* Domain: ibm.com
+* Domain: [IBM](http://ibm.com)
 * Credentials: username, password
 
 ## How to get credentials: 
