@@ -36,7 +36,7 @@ Sends audio and returns transcription results for a sessionless recognition requ
 | username                 | credentials| username obtained from IBM Bluemix.
 | password                 | credentials| password obtained from IBM Bluemix.
 | audioFile                | File       | The audio file.
-| audioType                | String     | The MIME type of the audio. See README for more details.
+| audioType                | String     | The MIME type of the audio. 
 | model                    | String     | The identifier of the model to be used for the recognition request. Possible values: ar-AR_BroadbandModel; en-UK_BroadbandModel; en-UK_NarrowbandModel; en-US_BroadbandModel (the default); en-US_NarrowbandModel; es-ES_BroadbandModel; es-ES_NarrowbandModel; fr-FR_BroadbandModel; ja-JP_BroadbandModel; ja-JP_NarrowbandModel; pt-BR_BroadbandModel; pt-BR_NarrowbandModel' zh-CN_BroadbandModel; zh-CN_NarrowbandModel
 | customizationId          | String     | The GUID of a custom language model that is to be used with the request. The base language model of the specified custom language model must match the model specified with the model parameter. By default, no custom model is used.
 | continuous               | String     | Indicates whether multiple final results that represent consecutive phrases separated by long pauses are returned. If true, such phrases are returned; if false (the default), recognition ends after the first end-of-speech (EOS) incident is detected.
@@ -50,6 +50,24 @@ Sends audio and returns transcription results for a sessionless recognition requ
 | profanityFilter          | String     | Indicates whether profanity filtering is performed on the transcript. If true (the default), the service filters profanity from all output except for keyword results by replacing inappropriate words with a series of asterisks. If false, the service returns results with no censoring. Applies to US English transcription only.
 | smartFormatting          | String     | Indicates whether dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses are to be converted into more readable, conventional representations in the final transcript of a recognition request. If true, smart formatting is performed; if false (the default), no formatting is performed. Applies to US English transcription only.
 | speakerLabels            | String     | Indicates whether labels that identify which words were spoken by which participants in a multi-person exchange are to be included in the response. If true, speaker labels are returned; if false (the default), they are not. Speaker labels can be returned only for the following language models: en-US_NarrowbandModel, es-ES_NarrowbandModel, ja-JP_NarrowbandModel. Setting speaker_labels to true forces the continuous and timestamps parameters to be true, as well, regardless of whether the user specifies false for the parameters.
+
+```
+The MIME type of the audio:
+audio/flac
+audio/mp3
+audio/mpeg
+audio/l16 (Also specify the sampling rate and number of channels; for example, audio/l16; rate=48000; channels=2. Ensure that the rate matches the rate at which the audio is captured and specify a maximum of 16 channels.)
+audio/wav (Provide audio with a maximum of nine channels.)
+audio/ogg (The service automatically detects the codec of the input audio.)
+audio/ogg;codecs=opus
+audio/ogg;codecs=vorbis
+audio/webm (The service automatically detects the codec of the input audio.)
+audio/webm;codecs=opus
+audio/webm;codecs=vorbis
+audio/mulaw (Also specify the sampling rate at which the audio is captured.)
+audio/basic (Use audio in this format only with narrowband models.)
+For additional information about the supported audio formats, see Audio formats(https://console.bluemix.net/docs/services/speech-to-text/input.html#formats). The information includes links to a number of Internet sites that provide technical and usage details about the different formats.
+```
 
 ## IBMWatsonSTT.createSession
 Creates a session and locks recognition requests to that engine.
@@ -111,7 +129,7 @@ Sends audio and returns transcription results for a session-based recognition re
 | sessionId                | String     | The identifier of the session to be used.
 | cookies                  | JSON       | Array of strings. The cookies to be set obtained from createSession method.
 | audioFile                | File       | The audio file.
-| audioType                | String     | The MIME type of the audio. See README for more details.
+| audioType                | String     | The MIME type of the audio. 
 | sequenceId               | String     | The sequence ID of this recognition task. If omitted, no sequence ID is associated with the request.
 | continuous               | String     | Indicates whether multiple final results that represent consecutive phrases separated by long pauses are returned. If true, such phrases are returned; if false (the default), recognition ends after the first end-of-speech (EOS) incident is detected.
 | inactivityTimeout        | String     | The time in seconds after which, if only silence (no speech) is detected in submitted audio, the connection is closed with a 400 response code. The default is 30 seconds. Useful for stopping audio submission from a live microphone when a user simply walks away. Use -1 for infinity.
@@ -133,7 +151,23 @@ Sends audio and returns transcription results for a session-based recognition re
     "Watson-DPAT=9S1xTLwSTprnW0uZdHBS1qaavtJEPe5llT1tKrJhytyKLV1zpTQrfHV3HWEmVTM8xZAj5sCmTciD%2FwYZ8g%2FxqkAc2nUauw95n%2BuDUf56VHocNCOMoy%2BDx6iw0wPq1lT8dUpDl7QFJeOjmztVUdEgWNUR7v7vvczBVlHVA5JAWBztVmKxPe2aad5OLWieLuSk2eZzbzDBrL3HBvF9%2BZxUgL0TbeBz29oKEH%2BC40G0RCFy6xM6ZfbnOW4%2BgzWuQAEVM%2BGc8qB8DtZ5kU8PleVGARmTB8oOhQqMHn24XmU%2Bs7mJb8g8xUjyK8S0%2Fmm7p1xyjbfnBWPCUHbOjXWZKEhWenJ4ko1RJAge3BYe%2FluOgoGbSw3Oi%2FVUPhaVdZ6rysu0m6x1mtJxxiK86xrWSrnQBesEQLY8RU%2FB%2F3zneqDRZ2rLuPTbDZDbrqwzIq4dtdRf3ojVF6rnYbDjagxGwlCjorT6t0MqHyv7LlT1YymTRoVdacSJaKpxK4v2BfpClvTPi9Jicas9bkOrFwkkcMO6uCpvhowqS6jiBn6mFDandacjjFSPwuOMIKXabRZrQ5oHe2AZZKXYybIstBUtXueHmHoXANIMxTK3ysf0Kt5Ajrd19oQmTzD080zSD%2FAG%2FruAPnOnTtjyrYg9Fx9GIGFagGUx2%2BBNtJGcRo9M2oywIbyW78yBvUKA5yR2BSXDgAc4yFLLNkPreXttdcUDu5jcHp%2BMQTYArK46r%2B1HiHApfz%2BXz5aji6BuaTghqXXYilII5yoyrMok17tTgK8FCPgFieUiEQFhWprBofx4y9BjJd8za4yLheSs%2BF2t%2B9nLklrG3XsMjUwKyIZKirpI7vgVku7TKC2Dzlvr7wy1hChQY6Ld%2BxxehMWz%2B9rVzfYLtTpnQqmpho3qsWA%3D; path=/speech-to-text/api; secure; HttpOnly"
 ]
 ```
-
+```
+The MIME type of the audio:
+audio/flac
+audio/mp3
+audio/mpeg
+audio/l16 (Also specify the sampling rate and number of channels; for example, audio/l16; rate=48000; channels=2. Ensure that the rate matches the rate at which the audio is captured and specify a maximum of 16 channels.)
+audio/wav (Provide audio with a maximum of nine channels.)
+audio/ogg (The service automatically detects the codec of the input audio.)
+audio/ogg;codecs=opus
+audio/ogg;codecs=vorbis
+audio/webm (The service automatically detects the codec of the input audio.)
+audio/webm;codecs=opus
+audio/webm;codecs=vorbis
+audio/mulaw (Also specify the sampling rate at which the audio is captured.)
+audio/basic (Use audio in this format only with narrowband models.)
+For additional information about the supported audio formats, see Audio formats(https://console.bluemix.net/docs/services/speech-to-text/input.html#formats). The information includes links to a number of Internet sites that provide technical and usage details about the different formats.
+```
 ## IBMWatsonSTT.deleteSession
 Deletes an existing session and its engine. You cannot send requests to a session after it is deleted.
 
@@ -171,7 +205,7 @@ Creates a job for a new asynchronous recognition request.
 | username                 | credentials| username obtained from IBM Bluemix.
 | password                 | credentials| password obtained from IBM Bluemix.
 | audioFile                | File       | The audio file.
-| audioType                | String     | The MIME type of the audio. See README for more details.
+| audioType                | String     | The MIME type of the audio. 
 | callbackUrl              | String     | A URL to which callback notifications are to be sent. The URL must already be successfully white-listed by using the POST register_callback method. Omit the parameter to poll the service for job completion and results.
 | events                   | String     | If the job includes a callback URL, a comma-separated list of notification events to which to subscribe. Valid events are: recognitions.started generates a callback notification when the service begins to process the job.; recognitions.completed generates a callback notification when the job is complete. You must use the GET recognitions/{id} method to retrieve the results before they time out or are deleted.; recognitions.completed_with_results generates a callback notification when the job is complete. The notification includes the results of the request.; recognitions.failed generates a callback notification if the service experiences an error while processing the job.
 | userToken                | String     | If the job includes a callback URL, a user-specified string that the service is to include with each callback notification for the job. The token allows the user to maintain an internal mapping between jobs and notification events.
@@ -189,6 +223,24 @@ Creates a job for a new asynchronous recognition request.
 | profanityFilter          | String     | Indicates whether profanity filtering is performed on the transcript. If true (the default), the service filters profanity from all output except for keyword results by replacing inappropriate words with a series of asterisks. If false, the service returns results with no censoring. Applies to US English transcription only.
 | smartFormatting          | String     | Indicates whether dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses are to be converted into more readable, conventional representations in the final transcript of a recognition request. If true, smart formatting is performed; if false (the default), no formatting is performed. Applies to US English transcription only.
 | speakerLabels            | String     | Indicates whether labels that identify which words were spoken by which participants in a multi-person exchange are to be included in the response. If true, speaker labels are returned; if false (the default), they are not. Speaker labels can be returned only for the following language models: en-US_NarrowbandModel, es-ES_NarrowbandModel, ja-JP_NarrowbandModel. Setting speaker_labels to true forces the continuous and timestamps parameters to be true, as well, regardless of whether the user specifies false for the parameters.
+
+```
+The MIME type of the audio:
+audio/flac
+audio/mp3
+audio/mpeg
+audio/l16 (Also specify the sampling rate and number of channels; for example, audio/l16; rate=48000; channels=2. Ensure that the rate matches the rate at which the audio is captured and specify a maximum of 16 channels.)
+audio/wav (Provide audio with a maximum of nine channels.)
+audio/ogg (The service automatically detects the codec of the input audio.)
+audio/ogg;codecs=opus
+audio/ogg;codecs=vorbis
+audio/webm (The service automatically detects the codec of the input audio.)
+audio/webm;codecs=opus
+audio/webm;codecs=vorbis
+audio/mulaw (Also specify the sampling rate at which the audio is captured.)
+audio/basic (Use audio in this format only with narrowband models.)
+For additional information about the supported audio formats, see Audio formats(https://console.bluemix.net/docs/services/speech-to-text/input.html#formats). The information includes links to a number of Internet sites that provide technical and usage details about the different formats.
+```
 
 ## IBMWatsonSTT.checkJobs
 Returns the status and ID of all outstanding jobs associated with the service credentials with which it is called.
